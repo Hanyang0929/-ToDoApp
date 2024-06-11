@@ -1,0 +1,819 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #333;
+  height: 100vh;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 80px;
+  background-color: #ffe100;
+  height: 10%;
+}
+
+.header h1 {
+  margin-right: auto;
+  margin-left: 13px;
+  padding-bottom: 7px;
+  font-size: 65px;
+  font-family: "Cherry Bomb One", system-ui;
+  font-weight: 400;
+  font-style: bold;
+  letter-spacing: 10px;
+}
+
+#clock {
+  display: inline-block;
+  margin-left: auto;
+  margin-right: 10px;
+  margin-top: 9px;
+  font-family: "Mochiy Pop One", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+  letter-spacing: 1px;
+}
+
+#clock .date {
+  color: rgb(0, 0, 0);
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
+  line-height: 20px;
+}
+
+#clock .time {
+  color: rgb(0, 0, 0);
+  font-size: 35px;
+  font-weight: bold;
+  margin: 0;
+  padding-left: 5px;
+}
+
+.container {
+  display: flex;
+  height: 90%;
+}
+
+.side-menu {
+  background-color: #ffc1cb;
+  width: 25%;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  font-family: "Mochiy Pop One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  height: 100%;
+}
+
+.side-menu h2 {
+  margin-top: 5px;
+  margin-bottom: 15px;
+  text-align: center;
+  color: #333;
+  font-size: 30px;
+}
+
+.side-menu button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  background-color: #ff00d4; /* 濃いグレー */
+  color: #fff;
+  border-radius: 5px;
+
+  font-family: "Mochiy Pop One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: 7px;
+}
+
+.side-menu button:hover {
+  background-color: #b40e98;
+}
+
+.main {
+  width: 75%;
+  padding: 20px;
+  background-color: #f3ebeb;
+}
+
+#taskForm {
+  margin-top: -5px;
+}
+
+.showTaskForm-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  background-color: #007bff; /* 青色 */
+  color: #fff;
+  border-radius: 5px;
+  position: relative;
+  top: 0px;
+  box-shadow: 0 5px #004d9f;
+  margin-top: 20px;
+  transition: 0.2s ease-in-out;
+
+  font-family: "Mochiy Pop One", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+  letter-spacing: 3px;
+}
+
+.showTaskForm-button:hover {
+  box-shadow: 0 0px #004d9f;
+  top: 5px;
+}
+
+.txt_anime {
+  width: 99%;
+  height: 100px;
+  line-height: 100px;
+  overflow: hidden;
+  padding: 1px 1px;
+  margin: 1px 1px 5px 0px;
+  font-weight: bold;
+  background: #fff;
+  border: solid 8px #ffb675;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px 0 rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+#text {
+  margin-top: 0px;
+}
+
+.txt_anime p {
+  position: absolute;
+  white-space: nowrap;
+  font-size: 55px;
+  color: #ffb675;
+  transform: translateX(116%);
+}
+
+@keyframes txt {
+  0% {
+    transform: translateX(116%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate {
+  animation-name: txt;
+  animation: txt linear;
+  animation-fill-mode: none;
+}
+
+.addTask-button {
+  margin-left: 8px;
+  position: relative;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  background-color: #007bff; /* 青色 */
+  color: #fff;
+  border-radius: 5px;
+  top: -2px;
+  box-shadow: 0 5px #004d9f;
+  margin-top: 20px;
+  transition: 0.2s ease-in-out;
+  font-family: "Mochiy Pop One", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+  letter-spacing: 2px;
+}
+
+.addTask-button:hover {
+  box-shadow: 0 0px #004d9f;
+  top: 5px;
+}
+
+.update-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  background-color: #007bff; /* 青色 */
+  color: #fff;
+  border-radius: 5px;
+}
+
+.garbageIcon {
+  height: 100%;
+  background-color: #f3ebeb;
+}
+
+.garbage-button {
+  cursor: pointer;
+  border: none;
+  background-color: #f3ebeb;
+  transition: transform 0.3s ease;
+  align-items: center;
+}
+
+.garbage-button:hover {
+  transform: scale(1.3);
+}
+
+.deadlineAlert {
+  background: #d6249f;
+  background: -webkit-linear-gradient(
+    45deg,
+    #fdf497 0%,
+    #fdf497 5%,
+    #fd5949 45%,
+    #d6249f 60%,
+    #285aeb 90%
+  );
+  background: linear-gradient(
+    45deg,
+    #fdf497 0%,
+    #fdf497 5%,
+    #fd5949 45%,
+    #d6249f 60%,
+    #285aeb 90%
+  );
+}
+
+.task-table {
+  display: block;
+  overflow-y: scroll;
+  height: 100%;
+  border-collapse: collapse;
+  height: calc(100vh / 1.56);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-weight: 50px;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #ccc; /* 枠で区切る */
+}
+
+th {
+  background-color: #63b6f2; /* 青色 */
+  color: #fff;
+  font-weight: 100;
+  position: sticky;
+  z-index: 1;
+  border-top: #ffffff;
+  top: 0px;
+}
+
+.task-table {
+  margin-top: 20px;
+  font-family: "Mochiy Pop One", sans-serif;
+  font-style: normal;
+  letter-spacing: 1px;
+}
+
+/* 期限、優先度、タスク内容、操作の比率 */
+th:nth-child(1),
+td:nth-child(1),
+th:nth-child(2),
+td:nth-child(2),
+th:nth-child(4),
+td:nth-child(4) {
+  width: 10%;
+}
+
+table td:nth-child(2) {
+  text-align: center;
+  font-size: 17px;
+}
+
+table td:nth-child(4) {
+  text-align: center;
+}
+
+td:nth-child(4) {
+  position: relative;
+}
+
+th:nth-child(3),
+td:nth-child(3) {
+  width: 70%; /* タスク内容の幅 */
+}
+
+.hidden {
+  display: none;
+}
+
+#edit-container {
+  margin-top: 20px;
+}
+
+.edit-hidden {
+  display: none;
+}
+
+.taskForm-button-hidden {
+  display: block;
+}
+
+/* ハンバーガーメニューのcss */
+.hamburger-container {
+  text-align: center;
+}
+
+.hamburger-menu {
+  display: inline-block;
+}
+
+.hamburger-icon {
+  cursor: pointer;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #63b6f2;
+  color: #fff;
+  border-radius: 50%;
+  font-size: 24px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.hamburger-icon:hover {
+  transform: scale(1.3);
+}
+
+.line {
+  width: 25px; /* 線の幅 */
+  height: 3px; /* 線の高さ */
+  background-color: #fff;
+  transition: transform 0.3s ease-in-out;
+  margin: 2px; /* 線と線の間の間隔 */
+}
+
+/* ハンバーガーアイコンの開閉アニメーション */
+.open .line:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.open .line:nth-child(2) {
+  opacity: 0; /* 中間の線を非表示 */
+}
+
+.open .line:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.menu-items {
+  position: absolute;
+  top: 67px;
+  right: 0px;
+  width: 180px;
+  background-color: #fff;
+  border: 2px solid #63b6f2;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  display: none; /* 最初は非表示 */
+  z-index: 20;
+}
+
+.menu-items button {
+  display: block;
+  margin-bottom: 10px;
+  padding: 8px;
+  font-size: 16px;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+
+  font-family: "Mochiy Pop One", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+  letter-spacing: 1px;
+}
+
+.menu-items button:hover {
+  transform: scale(1.1);
+}
+
+.menu-button-1 {
+  background-color: #63b6f2;
+  width: 100%;
+  margin-top: 5px;
+}
+
+.menu-button-2 {
+  background-color: #ff4929;
+  width: 100%;
+}
+
+.menu-button-3 {
+  background-color: #0ae00a;
+  width: 100%;
+}
+
+.menu-button-3:hover {
+  background-color: #0ae00a;
+}
+
+.menu-button-4 {
+  background-color: #0ae00a;
+  margin: 0 auto;
+  width: 50%;
+}
+
+.menu-button-5 {
+  background-color: #6b6464;
+  width: 100%;
+}
+
+.memoText {
+  width: 96%;
+  height: 40px;
+}
+/*ハンバーガーのcss終わり*/
+
+/*完了ボタン->confirm始め*/
+#confirm_snackbar {
+  visibility: hidden;
+  min-height: 100px;
+  min-width: 300px;
+  background-color: #ffc400;
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  padding: 15px 30px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  top: -50px;
+  opacity: 0;
+  transition: top 1s ease, visibility 1s ease-in-out, opacity 1s ease-in-out;
+  transform: translateX(-50%);
+  box-shadow: 0 3px 9px rgb(0 0 0 / 25%);
+  font-family: "Mochiy Pop One", sans-serif;
+  font-style: normal;
+  letter-spacing: 1px;
+}
+
+#confirm_snackbar p {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+#confirm_snackbar .hidden {
+  display: none;
+}
+
+#confirm_snackbar.visible {
+  visibility: visible;
+  opacity: 1;
+  top: 35px;
+}
+
+#confirm_snackbar.un_visible {
+  opacity: 0;
+  top: -50px;
+}
+
+.completeAlert_yes {
+  float: left;
+  box-shadow: 0 3px 9px rgb(0 0 0 / 25%);
+  height: 50px;
+  width: 150px;
+  border-color: #fff;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 25px;
+  cursor: pointer;
+  background-color: rgb(0, 255, 17);
+  border: 2px;
+  transition: 0.3s ease-in-out;
+  font-family: "Mochiy Pop One", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+  letter-spacing: 1px;
+}
+
+.completeAlert_no {
+  float: right;
+  box-shadow: 0 3px 9px rgb(0 0 0 / 25%);
+  height: 50px;
+  width: 150px;
+  border-color: #fff;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 25px;
+  cursor: pointer;
+  background-color: rgb(255, 0, 0);
+  border: 2px;
+  transition: 0.3s ease-in-out;
+  font-family: "Mochiy Pop One", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+  letter-spacing: 1px;
+}
+
+.completeAlert_yes:hover {
+  background-color: #0fb500;
+  transform: scale(1.2);
+}
+
+.completeAlert_no:hover {
+  background-color: #970000;
+  transform: scale(1.2);
+}
+
+/*完了ボタン->confirm終わり*/
+
+/*削除ボタン->confirm始め*/
+#delete_snackbar {
+  visibility: hidden;
+  min-height: 100px;
+  min-width: 340px;
+  background-color: #000000;
+  color: #ffffff;
+  text-align: center;
+  border-radius: 10px;
+  padding: 15px 30px;
+  position: fixed;
+  z-index: 1;
+  top: -50px;
+  left: 50%;
+  opacity: 0;
+  transition: top 1s ease, visibility 1s ease-in-out, opacity 1s ease-in-out;
+  transform: translateX(-50%);
+  box-shadow: 0 3px 9px rgb(0 0 0 / 25%);
+  font-family: "Mochiy Pop One", sans-serif;
+  font-style: normal;
+  letter-spacing: 1px;
+}
+
+#delete_snackbar p {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+#delete_snackbar.visible {
+  visibility: visible;
+  opacity: 1;
+  top: 35px;
+}
+
+#delete_snackbar.un_visible {
+  opacity: 0;
+  top: -50px;
+}
+
+.deleteAlert_yes {
+  float: left;
+  box-shadow: 0 3px 9px rgb(0 0 0 / 25%);
+  height: 50px;
+  width: 150px;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 25px;
+  cursor: pointer;
+  background-color: #00ff00;
+  border: 2px;
+  transition: 0.3s ease-in-out;
+  font-family: "Mochiy Pop One", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+  letter-spacing: 1px;
+}
+
+.deleteAlert_no {
+  float: right;
+  box-shadow: 0 3px 9px rgb(0 0 0 / 25%);
+  height: 50px;
+  width: 150px;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 25px;
+  cursor: pointer;
+  background-color: rgb(255, 0, 0);
+  border: 2px;
+  transition: 0.3s ease-in-out;
+  font-family: "Mochiy Pop One", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+  letter-spacing: 1px;
+}
+
+.deleteAlert_yes:hover {
+  background-color: #00a300;
+  transform: scale(1.2);
+}
+
+.deleteAlert_no:hover {
+  background-color: #970000;
+  transform: scale(1.2);
+}
+/*削除ボタン->confirm終わり*/
+
+/*タスク入力欄のアラート*/
+#task_snackbar {
+  visibility: hidden;
+  min-width: 250px;
+  background-color: #fc8eac;
+  color: #ffffff;
+  text-align: center;
+  border-radius: 10px;
+  padding: 15px 30px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  top: 30px;
+  transform: translateX(-50%);
+  box-shadow: 0px 3px 9px rgb(0 0 0 / 50%);
+  font-weight: bold;
+  font-size: 20px;
+}
+
+#task_snackbar.task_notification {
+  visibility: visible;
+  animation: fadeIn1 0.5s, fadeout2 0.5s 2.5s;
+}
+
+@keyframes fadeIn1 {
+  from {
+    top: 0;
+    opacity: 0;
+  }
+  to {
+    top: 30px;
+    opacity: 1;
+  }
+}
+
+@keyframes fadeout2 {
+  from {
+    top: 30px;
+    opacity: 1;
+  }
+  to {
+    top: 0;
+    opacity: 0;
+  }
+}
+
+.taskAlert {
+  color: #ffffff;
+  font-family: "Mochiy Pop One", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+  letter-spacing: 1px;
+}
+/*タスク入力欄のアラート*/
+
+/*下から出るタスク完了通知*/
+
+#complete_snackbar {
+  visibility: hidden;
+  min-width: 250px;
+  background-color: #fc8eac;
+  color: #ffffff;
+  text-align: center;
+  border-radius: 10px;
+  padding: 15px 30px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  bottom: 30px;
+  transform: translateX(-50%);
+  box-shadow: 0 3px 9px rgb(0 0 0 / 50%);
+  font-weight: bold;
+  font-size: 20px;
+}
+
+#complete_snackbar.complete_notification {
+  visibility: visible;
+  animation: fadeIn 0.5s, fadeout 0.5s 2.5s;
+}
+
+@keyframes fadeIn {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
+
+/*下から出るタスク完了通知終わり*/
+
+#memo_snackbar {
+  visibility: hidden;
+  min-width: 250px;
+  background-color: #0ae00a;
+  color: #ffffff;
+  text-align: center;
+  border-radius: 10px;
+  padding: 15px 30px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  bottom: 30px;
+  transform: translateX(-50%);
+  box-shadow: 0 3px 9px rgb(0 0 0 / 50%);
+  font-weight: bold;
+  font-size: 20px;
+}
+
+#memo_snackbar.memo_notification {
+  visibility: visible;
+  animation: fadeIn3 0.5s, fadeout3 0.5s 2.5s;
+}
+
+@keyframes fadeIn3 {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@keyframes fadeout3 {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .side-menu {
+    width: 100%;
+    box-shadow: none;
+    margin-bottom: 20px;
+  }
+
+  .main {
+    width: 100%;
+  }
+}
+
+@media (max-width: 620px) {
+  .container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .side-menu {
+    width: 100%;
+    box-shadow: none;
+    margin-bottom: 20px;
+  }
+
+  .main {
+    width: 100%;
+  }
+
+  .header h1 {
+    display: none;
+  }
+}
