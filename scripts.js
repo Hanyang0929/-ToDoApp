@@ -20,25 +20,19 @@ function addTask() {
     bar.className = bar.className.replace("task_notification", "");
   }, 3000);
 
-  const taskAlert_text = [
-    "タスク内容を入力してください",
-    "期限日を入力してください",
-    "タスク内容と期限日を入力してください",
-  ];
-
   if (!taskDescription && !deadline) {
     bar.innerHTML = `
-    <p class="taskAlert">${taskAlert_text[2]}</p>
+    <p class="taskAlert">タスク内容を入力してください"</p>
     `;
     return;
   } else if (taskDescription && !deadline) {
     bar.innerHTML = `
-    <p class="taskAlert">${taskAlert_text[1]}</p>
+    <p class="taskAlert">期限日を入力してください</p>
   `;
     return;
   } else if (!taskDescription && deadline) {
     bar.innerHTML = `
-    <p class="taskAlert">${taskAlert_text[0]}</p>
+    <p class="taskAlert">タスク内容と期限日を入力してください</p>
   `;
     return;
   }
@@ -353,9 +347,36 @@ function updateTask() {
   const updatePriority = document.getElementById("edit-prioritySelect").value;
   const updateDeadline = document.getElementById("edit-deadlineDate").value;
 
+  const bar = document.getElementById("task_snackbar");
+  bar.className = "task_notification";
+  setTimeout(function () {
+    bar.className = bar.className.replace("task_notification", "");
+  }, 3000);
+
+  /*
   if (!updateTaskDescription || !updateDeadline) {
     alert("タスク内容と期限を入力してください");
     return;
+  }
+  */
+
+  if (!updateTaskDescription && !updateDeadline) {
+    bar.innerHTML = `
+    <p class="taskAlert">タスク内容と期限日を入力してください"</p>
+    `;
+    return;
+  } else if (updateTaskDescription && !updateDeadline) {
+    bar.innerHTML = `
+    <p class="taskAlert">期限日を入力してください</p>
+  `;
+    return;
+  } else if (!updateTaskDescription && updateDeadline) {
+    bar.innerHTML = `
+    <p class="taskAlert">タスク内容を入力してください</p>
+  `;
+    return;
+  } else {
+    bar.classList.remove("task_notification");
   }
 
   tasks[currentTaskIndex] = {

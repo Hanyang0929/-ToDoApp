@@ -667,7 +667,7 @@ td:nth-child(3) {
 
 #task_snackbar.task_notification {
   visibility: visible;
-  animation: fadeIn1 0.5s, fadeout2 0.5s 2.5s;
+  animation: fadeIn1 0.5s, fadeout1 0.5s 2.5s;
 }
 
 @keyframes fadeIn1 {
@@ -681,7 +681,7 @@ td:nth-child(3) {
   }
 }
 
-@keyframes fadeout2 {
+@keyframes fadeout1 {
   from {
     top: 30px;
     opacity: 1;
