@@ -22,7 +22,7 @@ function addTask() {
 
   if (!taskDescription && !deadline) {
     bar.innerHTML = `
-    <p class="taskAlert">タスク内容を入力してください"</p>
+    <p class="taskAlert">タスク内容と期限日を入力してください</p>
     `;
     return;
   } else if (taskDescription && !deadline) {
@@ -32,7 +32,7 @@ function addTask() {
     return;
   } else if (!taskDescription && deadline) {
     bar.innerHTML = `
-    <p class="taskAlert">タスク内容と期限日を入力してください</p>
+    <p class="taskAlert">タスク内容を入力してください</p>
   `;
     return;
   }
