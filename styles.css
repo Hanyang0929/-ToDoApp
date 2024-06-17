@@ -135,7 +135,7 @@ body {
 }
 
 .txt_anime {
-  width: 99%;
+  width: 98%;
   height: 100px;
   line-height: 100px;
   overflow: hidden;
@@ -805,7 +805,7 @@ td:nth-child(3) {
   }
 
   .txt_anime {
-    width: 93%;
+    width: 92%;
   }
 
   .side-menu {
