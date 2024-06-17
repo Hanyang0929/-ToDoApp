@@ -158,12 +158,12 @@ body {
   white-space: nowrap;
   font-size: 55px;
   color: #ffb675;
-  transform: translateX(116%);
+  transform: translateX(121%);
 }
 
 @keyframes txt {
   0% {
-    transform: translateX(116%);
+    transform: translateX(121%);
   }
   100% {
     transform: translateX(-100%);
@@ -293,6 +293,8 @@ th {
   z-index: 1;
   border-top: #ffffff;
   top: 0px;
+
+  overflow-x: hidden; /*横スクロール禁止*/
 }
 
 .task-table {
@@ -799,12 +801,17 @@ td:nth-child(3) {
   .container {
     flex-direction: column;
     height: auto;
+    overflow-x: hidden;
+  }
+
+  .txt_anime {
+    width: 93%;
   }
 
   .side-menu {
     width: 100%;
+
     box-shadow: none;
-    margin-bottom: 20px;
   }
 
   .main {
@@ -818,10 +825,14 @@ td:nth-child(3) {
     height: auto;
   }
 
+  .txt_anime {
+    width: 89%;
+    margin-bottom: 25px;
+  }
+
   .side-menu {
     width: 100%;
     box-shadow: none;
-    margin-bottom: 20px;
   }
 
   .main {
