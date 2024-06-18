@@ -466,6 +466,9 @@ td:nth-child(3) {
 .memoText {
   width: 96%;
   height: 40px;
+  font-family: "Mochiy Pop One", sans-serif;
+  font-style: normal;
+  letter-spacing: 1px;
 }
 /*ハンバーガーのcss終わり*/
 
@@ -720,7 +723,12 @@ td:nth-child(3) {
   transform: translateX(-50%);
   box-shadow: 0 3px 9px rgb(0 0 0 / 50%);
   font-weight: bold;
+
   font-size: 20px;
+  font-family: "Mochiy Pop One", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+  letter-spacing: 2px;
 }
 
 #complete_snackbar.complete_notification {
@@ -766,8 +774,12 @@ td:nth-child(3) {
   bottom: 30px;
   transform: translateX(-50%);
   box-shadow: 0 3px 9px rgb(0 0 0 / 50%);
-  font-weight: bold;
+
   font-size: 20px;
+  font-family: "Mochiy Pop One", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+  letter-spacing: 2px;
 }
 
 #memo_snackbar.memo_notification {
