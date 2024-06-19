@@ -75,6 +75,7 @@ body {
   text-align: center;
   color: #333;
   font-size: 30px;
+  margin: 10px;
 }
 
 .side-menu button {
@@ -229,6 +230,7 @@ body {
 .garbageIcon {
   height: 100%;
   background-color: #f3ebeb;
+  text-align: center;
 }
 
 .garbage-button {
