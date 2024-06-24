@@ -1,13 +1,6 @@
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 let currentTaskIndex = null;
 
-function showTaskForm() {
-  resetTaskForm(); // タスク追加フォームをリセット
-  const taskForm = document.getElementById("taskForm");
-  taskForm.style.display = "block";
-  document.getElementById("taskForm-button").style.display = "none";
-}
-
 function addTask() {
   const taskDescription = document.getElementById("taskDescription").value;
   const priority = document.getElementById("prioritySelect").value;
@@ -48,9 +41,8 @@ function addTask() {
 
   tasks.push(task);
   localStorage.setItem("tasks", JSON.stringify(tasks)); // ローカルストレージに保存
-  document.getElementById("taskForm").style.display = "none";
-  document.getElementById("taskForm-button").style.display = "block";
   bar.classList.add("hidden");
+  resetTaskForm(); // タスク追加フォームをリセット
   displayTasks();
 }
 
@@ -113,11 +105,29 @@ function displayTasks() {
 }
 
 function showCompletedTask() {
+  const editContainer = document.getElementById("edit-container"); //編集フォーム開いたまま削除→更新したら復活するので、削除ボタンを押したら編集フォームは閉じる
+  editContainer.classList.add("edit-hidden");
+  currentTaskIndex = null;
+
+  document.getElementById("delete_snackbar").classList.add("un_visible"); //完了コンファームと削除コンファーム
+  document.getElementById("delete_snackbar").classList.remove("visible");
+
+  document.getElementById("confirm_snackbar").classList.add("un_visible");
+  document.getElementById("confirm_snackbar").classList.remove("visible");
+
+  document.getElementById("taskForm").style.display = "none";
+
   displayCompletedTasks();
 }
 
 ////////////////////////ハンバーガーメニュー////////////////////////////////////
 function toggleMenu(index) {
+  document.getElementById("confirm_snackbar").classList.add("un_visible");
+  document.getElementById("confirm_snackbar").classList.remove("visible");
+
+  document.getElementById("delete_snackbar").classList.add("un_visible");
+  document.getElementById("delete_snackbar").classList.remove("visible");
+
   const menuItems = document.getElementById(`menu-items-${index}`);
   const hamburgerIcon = document.getElementById(`hamburger-icon-${index}`);
 
@@ -150,6 +160,18 @@ function toggleMenu(index) {
 }
 
 function sortByPriority() {
+  const editContainer = document.getElementById("edit-container"); //編集フォーム開いたまま削除→更新したら復活するので、削除ボタンを押したら編集フォームは閉じる
+  editContainer.classList.add("edit-hidden");
+  currentTaskIndex = null;
+
+  document.getElementById("delete_snackbar").classList.add("un_visible");
+  document.getElementById("delete_snackbar").classList.remove("visible");
+
+  document.getElementById("confirm_snackbar").classList.add("un_visible");
+  document.getElementById("confirm_snackbar").classList.remove("visible");
+
+  document.getElementById("taskForm").style.display = "block";
+
   const priorityWithIndex = tasks.map((task, index) => ({
     index: index,
     priority: task.priority === "高" ? 1 : 2,
@@ -175,6 +197,18 @@ function sortByPriority() {
 }
 
 function sortByDeadline() {
+  const editContainer = document.getElementById("edit-container"); //編集フォーム開いたまま削除→更新したら復活するので、削除ボタンを押したら編集フォームは閉じる
+  editContainer.classList.add("edit-hidden");
+  currentTaskIndex = null;
+
+  document.getElementById("delete_snackbar").classList.add("un_visible");
+  document.getElementById("delete_snackbar").classList.remove("visible");
+
+  document.getElementById("confirm_snackbar").classList.add("un_visible");
+  document.getElementById("confirm_snackbar").classList.remove("visible");
+
+  document.getElementById("taskForm").style.display = "block";
+
   const deadlineWithIndex = tasks.map((task, index) => ({
     index: index,
     deadline: new Date(task.deadline).getTime(),
@@ -228,9 +262,17 @@ function sortMinMax(arr) {
 
 /////////////////タスク完了＋confirm//////////////////////////////////////
 function completeTask(index) {
+  document.getElementById("delete_snackbar").classList.remove("visible"); //コンファームが2重に表示されないように消す
+
   const bar = document.getElementById("confirm_snackbar");
   bar.classList.add("visible");
   bar.classList.remove("un_visible");
+
+  const editContainer = document.getElementById("edit-container"); //編集フォーム開いたまま完了→更新してもフォームに残っているので編集フォームは閉じる
+  editContainer.classList.add("edit-hidden");
+  currentTaskIndex = null;
+
+  document.getElementById("taskForm").style.display = "block";
 
   document.getElementById("complete_yes").onclick = function () {
     const bar = document.getElementById("confirm_snackbar");
@@ -276,6 +318,8 @@ function displayCompletedTasks() {
 ////////////////////////////////////////////////////////////////////////////////
 
 function deleteCompleteTask(index) {
+  document.getElementById("confirm_snackbar").classList.remove("visible"); //コンファームが2重に表示されないように消す
+
   /////////タスクを削除する処理///////confirm/////////
   const bar = document.getElementById("delete_snackbar");
   bar.classList.add("visible");
@@ -286,6 +330,7 @@ function deleteCompleteTask(index) {
     bar.classList.add("un_visible");
     bar.classList.remove("visible");
     tasks.splice(index, 1);
+
     localStorage.setItem("tasks", JSON.stringify(tasks)); // ローカルストレージに保存
     displayCompletedTasks();
   };
@@ -298,15 +343,24 @@ function deleteCompleteTask(index) {
 }
 
 function deleteTask(index) {
+  document.getElementById("confirm_snackbar").classList.remove("visible"); //コンファームが2重に表示されないように消す
+
   const bar = document.getElementById("delete_snackbar");
   bar.classList.add("visible");
   bar.classList.remove("un_visible");
+
+  const editContainer = document.getElementById("edit-container"); //編集フォーム開いたまま削除→更新したら復活するので、削除ボタンを押したら編集フォームは閉じる
+  editContainer.classList.add("edit-hidden");
+  currentTaskIndex = null;
+
+  document.getElementById("taskForm").style.display = "block"; //追加フォーム表示
 
   document.getElementById("delete_yes").onclick = function () {
     const bar = document.getElementById("delete_snackbar");
     bar.classList.add("un_visible");
     bar.classList.remove("visible");
     tasks.splice(index, 1);
+
     localStorage.setItem("tasks", JSON.stringify(tasks)); // ローカルストレージに保存
     displayTasks();
   };
@@ -332,7 +386,6 @@ function editTask(index) {
   const [year, month, day] = tasks[index].deadline.split("/");
   editDeadline.value = `${year}-${month}-${day}`;
   editContainer.classList.remove("edit-hidden");
-  document.getElementById("taskForm-button").style.display = "none"; //編集ボタン押したときにタスクを追加ボタンがなくなる。ユーザがさわらないように
   document.getElementById("taskForm").style.display = "none"; //編集ボタン押したときに新規のタスクの追加フォームを閉じる
 }
 
@@ -362,7 +415,7 @@ function updateTask() {
 
   if (!updateTaskDescription && !updateDeadline) {
     bar.innerHTML = `
-    <p class="taskAlert">タスク内容と期限日を入力してください"</p>
+    <p class="taskAlert">タスク内容と期限日を入力してください</p>
     `;
     return;
   } else if (updateTaskDescription && !updateDeadline) {
@@ -388,11 +441,14 @@ function updateTask() {
   };
 
   const editContainer = document.getElementById("edit-container");
-  editContainer.classList.add("edit-hidden");
+  editContainer.classList.add("edit-hidden"); //編集フォームを表示する
+
+  document.getElementById("taskForm").style.display = "block"; //追加フォームを表示する
+  resetTaskForm();
   currentTaskIndex = null;
 
   localStorage.setItem("tasks", JSON.stringify(tasks)); // ローカルストレージに保存
-  document.getElementById("taskForm-button").style.display = "block"; //displayTask()の後に実行するとタスクを追加ボタンが動かにゃい
+
   displayTasks();
 }
 ///////////////////////////////////////////////////////////////////////
@@ -433,7 +489,6 @@ function resetTaskForm() {
   document.getElementById("taskDescription").value = "";
   document.getElementById("prioritySelect").value = "high";
   document.getElementById("deadlineDate").value = "";
-  document.getElementById("taskForm").style.display = "none";
 }
 
 // 初期表示時にタスクを表示

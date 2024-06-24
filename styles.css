@@ -110,31 +110,6 @@ body {
   margin-top: -5px;
 }
 
-.showTaskForm-button {
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  border: none;
-  background-color: #007bff; /* 青色 */
-  color: #fff;
-  border-radius: 5px;
-  position: relative;
-  top: 0px;
-  box-shadow: 0 5px #004d9f;
-  margin-top: 20px;
-  transition: 0.2s ease-in-out;
-
-  font-family: "Mochiy Pop One", sans-serif;
-  font-weight: 100;
-  font-style: normal;
-  letter-spacing: 3px;
-}
-
-.showTaskForm-button:hover {
-  box-shadow: 0 0px #004d9f;
-  top: 5px;
-}
-
 .txt_anime {
   width: 98%;
   height: 100px;
