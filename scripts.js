@@ -109,7 +109,7 @@ function showCompletedTask() {
   editContainer.classList.add("edit-hidden");
   currentTaskIndex = null;
 
-  document.getElementById("delete_snackbar").classList.add("un_visible"); //完了コンファームと削除コンファーム
+  document.getElementById("delete_snackbar").classList.add("un_visible"); //完了コンファームと削除コンファーム同時に表示しない
   document.getElementById("delete_snackbar").classList.remove("visible");
 
   document.getElementById("confirm_snackbar").classList.add("un_visible");
@@ -122,7 +122,7 @@ function showCompletedTask() {
 
 ////////////////////////ハンバーガーメニュー////////////////////////////////////
 function toggleMenu(index) {
-  document.getElementById("confirm_snackbar").classList.add("un_visible");
+  document.getElementById("confirm_snackbar").classList.add("un_visible"); //完了コンファームと削除コンファーム同時に表示しない
   document.getElementById("confirm_snackbar").classList.remove("visible");
 
   document.getElementById("delete_snackbar").classList.add("un_visible");
@@ -164,7 +164,7 @@ function sortByPriority() {
   editContainer.classList.add("edit-hidden");
   currentTaskIndex = null;
 
-  document.getElementById("delete_snackbar").classList.add("un_visible");
+  document.getElementById("delete_snackbar").classList.add("un_visible"); //完了コンファームと削除コンファーム同時に表示しない
   document.getElementById("delete_snackbar").classList.remove("visible");
 
   document.getElementById("confirm_snackbar").classList.add("un_visible");
@@ -201,7 +201,7 @@ function sortByDeadline() {
   editContainer.classList.add("edit-hidden");
   currentTaskIndex = null;
 
-  document.getElementById("delete_snackbar").classList.add("un_visible");
+  document.getElementById("delete_snackbar").classList.add("un_visible"); //完了コンファームと削除コンファーム同時に表示しない
   document.getElementById("delete_snackbar").classList.remove("visible");
 
   document.getElementById("confirm_snackbar").classList.add("un_visible");

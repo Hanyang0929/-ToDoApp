@@ -4,8 +4,6 @@ body {
   padding: 0;
   background-color: #ffc1cb;
   height: 100vh;
-
-  max-width: 100%;
 }
 
 .header {
@@ -248,6 +246,10 @@ body {
   height: 100%;
   border-collapse: collapse;
   height: calc(100vh / 1.56);
+  margin-top: 20px;
+  font-family: "Mochiy Pop One", sans-serif;
+  font-style: normal;
+  letter-spacing: 1px;
 }
 
 table {
@@ -256,7 +258,9 @@ table {
   margin-top: 20px;
   font-weight: 50px;
 }
-
+tr {
+  width: 100%;
+}
 th,
 td {
   padding: 10px;
@@ -274,13 +278,6 @@ th {
   top: 0px;
 
   overflow-x: hidden; /*横スクロール禁止*/
-}
-
-.task-table {
-  margin-top: 20px;
-  font-family: "Mochiy Pop One", sans-serif;
-  font-style: normal;
-  letter-spacing: 1px;
 }
 
 /* 期限、優先度、タスク内容、操作の比率 */
