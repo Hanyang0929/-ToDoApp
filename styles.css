@@ -4,6 +4,8 @@ body {
   padding: 0;
   background-color: #ffc1cb;
   height: 100vh;
+
+  max-width: 100%;
 }
 
 .header {
@@ -307,6 +309,13 @@ td:nth-child(4) {
 th:nth-child(3),
 td:nth-child(3) {
   width: 70%; /* タスク内容の幅 */
+  /*
+  word-wrap: break-word;
+  overflow-wrap: break-word; 
+  white-space: normal; 
+  word-break: break-all; 
+  overflow: hidden;
+  */
 }
 
 .hidden {
