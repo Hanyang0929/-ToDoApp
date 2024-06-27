@@ -4,6 +4,8 @@ body {
   padding: 0;
   background-color: #ffc1cb;
   height: 100vh;
+  overflow-y: hidden;
+  overflow-x: hidden;
 }
 
 .header {
@@ -204,14 +206,14 @@ body {
 
 .garbageIcon {
   height: 100%;
-  background-color: #f3ebeb;
+  background-color: transparent;
   text-align: center;
 }
 
 .garbage-button {
   cursor: pointer;
   border: none;
-  background-color: #f3ebeb;
+  background-color: transparent;
   transition: transform 0.3s ease;
   align-items: center;
 }
@@ -250,44 +252,50 @@ body {
   font-family: "Mochiy Pop One", sans-serif;
   font-style: normal;
   letter-spacing: 1px;
+  font-weight: 50;
+  overflow-x: hidden;
+  width: 100%;
 }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-  font-weight: 50px;
+/**/
+thead tr,
+tbody tr {
+  width: 99.9%;
+  display: table;
+  table-layout: fixed; /* 各セルの幅を固定 */
+  overflow-wrap: break-word;
 }
-tr {
-  width: 100%;
+
+table th:nth-child(1),
+table td:nth-child(1),
+table th:nth-child(2),
+table td:nth-child(2),
+table th:nth-child(4),
+table td:nth-child(4) {
+  width: 10%;
 }
+
+table th:nth-child(3),
+table td:nth-child(3) {
+  width: 70%;
+}
+
 th,
 td {
   padding: 10px;
   text-align: left;
   border: 1px solid #ccc; /* 枠で区切る */
+  font-weight: 50;
 }
 
-th {
+thead {
   background-color: #63b6f2; /* 青色 */
   color: #fff;
-  font-weight: 100;
   position: sticky;
-  z-index: 1;
-  border-top: #ffffff;
+  z-index: 2;
+  border-top: #ccc;
   top: 0px;
-
   overflow-x: hidden; /*横スクロール禁止*/
-}
-
-/* 期限、優先度、タスク内容、操作の比率 */
-th:nth-child(1),
-td:nth-child(1),
-th:nth-child(2),
-td:nth-child(2),
-th:nth-child(4),
-td:nth-child(4) {
-  width: 10%;
 }
 
 table td:nth-child(2) {
@@ -297,22 +305,11 @@ table td:nth-child(2) {
 
 table td:nth-child(4) {
   text-align: center;
+  border: 1px solid #ccc;
 }
 
 td:nth-child(4) {
   position: relative;
-}
-
-th:nth-child(3),
-td:nth-child(3) {
-  width: 70%; /* タスク内容の幅 */
-  /*
-  word-wrap: break-word;
-  overflow-wrap: break-word; 
-  white-space: normal; 
-  word-break: break-all; 
-  overflow: hidden;
-  */
 }
 
 .hidden {

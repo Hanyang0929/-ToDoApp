@@ -305,7 +305,7 @@ function displayCompletedTasks() {
         <td>${task.deadline}</td>
         <td>${task.priority}</td>
         <td>${task.description}</td>
-        <td>
+        <td
           <button type="button" onclick="deleteCompleteTask(${index})" style="height: 50px;" class="garbage-button">
             <img src="todo_garbage.png" class="garbageIcon">
           </button>
